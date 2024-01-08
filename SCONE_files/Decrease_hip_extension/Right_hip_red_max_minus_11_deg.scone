@@ -1,0 +1,35 @@
+CmaOptimizer {
+	
+	signature_prefix = "Right_hip_red_max_minus_11_deg_6"
+	
+	#max_generations = 3000
+	
+	init_file = parameters/Right_hip_red_max_minus_11_deg_5_Gen_277_0_626.par  
+	use_init_file = true
+	use_init_file_std = true
+	#init_file_std_factor = 10
+	# max_threads = 1
+	lambda = 40
+	sigma = 5 
+	
+	SimulationObjective {
+		max_duration = 15
+		
+		# Model used in simulation
+		ModelOpenSim3 {
+			model_file = model/gait0914.osim
+			
+			# Optimize initial state parameters
+			state_init_file = states/initial_state.sto
+			initial_state_offset =	0~0.01<-0.5,0.5>	
+			initial_state_offset_exclude = "*_tx;*_ty;*_u"
+			
+		}
+		
+		# Controller for gait based on [Geyer & Herr 2010]
+		<< controller/gait_controller.scone >>
+		
+		# Measure for gait
+		<< measures/gait_measure_altered_model_Right_hip_red_max_minus_11_deg_test.scone >>
+	}
+}
