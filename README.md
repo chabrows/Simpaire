@@ -3,15 +3,15 @@ This repository contains all the python files and the setup needed te reproduce 
 
 ## Folder content
 + **SCONE_files**:This repository contains SCONE files designed for simulating two distinct gait impairments:
-Markup : * Decrease Knee Flexion during the Swing Phase
-          * Maximum Knee Angle = 70 deg
-          * Maximum Knee Angle = 68 deg
-          * Maximum Knee Angle = 67 deg
-          * Maximum Knee Angle = 66.5 deg
-          * Maximum Knee Angle = 66 deg
-          * Maximum Knee Angle = 65.5 deg
-          * Maximum Knee Angle = 65 deg
-      * Decrease Hip Extension during the Stance Phase
+* Decrease Knee Flexion during the Swing Phase
+         * Maximum Knee Angle = 70 deg
+         * Maximum Knee Angle = 68 deg
+         * Maximum Knee Angle = 67 deg
+         * Maximum Knee Angle = 66.5 deg
+         * Maximum Knee Angle = 66 deg
+         * Maximum Knee Angle = 65.5 deg
+         * Maximum Knee Angle = 65 deg
+  * Decrease Hip Extension during the Stance Phase
           * Minimum Hip Angle = -15 deg
           * Minimum Hip Angle = -13 deg
           * Minimum Hip Angle = -11 deg
