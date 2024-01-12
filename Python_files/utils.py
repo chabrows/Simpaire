@@ -963,7 +963,8 @@ def output_matrix_kinematics(state, side, output_file=None):
         leg_name = 'leg0_l'
     forces = state[['time', leg_name + '.grf_norm_y']]
 
-    num_columns = 55
+    #num_columns = 55
+    num_columns = 56
     num_rows = len(hs_time) - 3
 
     # Create a list of column names
@@ -1017,29 +1018,39 @@ def output_matrix_kinematics(state, side, output_file=None):
     output = output.rename(columns={'Column_34': 'ankle_moment_min_stance_'+ side})
     output = output.rename(columns={'Column_35': 'ankle_moment_max_stance_'+ side})
 
-    output = output.rename(columns={'Column_36': 'ankle_moment_mean_swing_'+ side})
-    output = output.rename(columns={'Column_37': 'ankle_moment_std_swing_'+ side})
-    output = output.rename(columns={'Column_38': 'ankle_moment_min_swing_'+ side})
-    output = output.rename(columns={'Column_39': 'ankle_moment_max_swing_'+ side})
+    #output = output.rename(columns={'Column_36': 'ankle_moment_mean_swing_'+ side})
+    #output = output.rename(columns={'Column_37': 'ankle_moment_std_swing_'+ side})
+    #output = output.rename(columns={'Column_38': 'ankle_moment_min_swing_'+ side})
+    #output = output.rename(columns={'Column_39': 'ankle_moment_max_swing_'+ side})
 
-    output = output.rename(columns={'Column_40': 'hip_moment_mean_stance_'+ side})
-    output = output.rename(columns={'Column_41': 'hip_moment_std_stance_'+ side})
-    output = output.rename(columns={'Column_42': 'hip_moment_min_stance_'+ side})
-    output = output.rename(columns={'Column_43': 'hip_moment_max_stance_'+ side})
+    output = output.rename(columns={'Column_36': 'hip_moment_mean_stance_'+ side})
+    output = output.rename(columns={'Column_37': 'hip_moment_std_stance_'+ side})
+    output = output.rename(columns={'Column_38': 'hip_moment_min_stance_'+ side})
+    output = output.rename(columns={'Column_39': 'hip_moment_max_stance_'+ side})
 
-    output = output.rename(columns={'Column_44': 'hip_moment_mean_swing_'+ side})
-    output = output.rename(columns={'Column_45': 'hip_moment_std_swing_'+ side})
-    output = output.rename(columns={'Column_46': 'hip_moment_min_swing_'+ side})
-    output = output.rename(columns={'Column_47': 'hip_moment_max_swing_'+ side})
+    output = output.rename(columns={'Column_40': 'hip_moment_mean_swing_'+ side})
+    output = output.rename(columns={'Column_41': 'hip_moment_std_swing_'+ side})
+    output = output.rename(columns={'Column_42': 'hip_moment_min_swing_'+ side})
+    output = output.rename(columns={'Column_43': 'hip_moment_max_swing_'+ side})
 
-    output = output.rename(columns={'Column_48': 'grf_mean_stance_'+ side})
-    output = output.rename(columns={'Column_49': 'grf_std_stance_'+ side})
-    output = output.rename(columns={'Column_50': 'grf_min_stance_'+ side})
-    output = output.rename(columns={'Column_51': 'grf_max_stance_'+ side})
+    output = output.rename(columns={'Column_44': 'grf_mean_stance_'+ side})
+    output = output.rename(columns={'Column_45': 'grf_std_stance_'+ side})
+    output = output.rename(columns={'Column_46': 'grf_min_stance_'+ side})
+    output = output.rename(columns={'Column_47': 'grf_max_stance_'+ side})
 
-    output = output.rename(columns={'Column_52': 'grf_mean_swing_'+ side})
-    output = output.rename(columns={'Column_53': 'grf_std_swing_'+ side})
-    output = output.rename(columns={'Column_54': 'grf_max_swing_'+ side})
+    #output = output.rename(columns={'Column_52': 'grf_mean_swing_'+ side})
+    #output = output.rename(columns={'Column_53': 'grf_std_swing_'+ side})
+    #output = output.rename(columns={'Column_54': 'grf_max_swing_'+ side})
+
+    output = output.rename(columns={'Column_48': 'pelvis_tilt_mean_stance_' + side})
+    output = output.rename(columns={'Column_49': 'pelvis_tilt_std_stance_' + side})
+    output = output.rename(columns={'Column_50': 'pelvis_tilt_min_stance_' + side})
+    output = output.rename(columns={'Column_51': 'pelvis_tilt_max_stance_' + side})
+
+    output = output.rename(columns={'Column_52': 'pelvis_tilt_mean_swing_' + side})
+    output = output.rename(columns={'Column_53': 'pelvis_tilt_std_swing_' + side})
+    output = output.rename(columns={'Column_54': 'pelvis_tilt_min_stance_' + side})
+    output = output.rename(columns={'Column_55': 'pelvis_tilt_max_swing_' + side})
 
     output = output.astype(float)
 
@@ -1129,14 +1140,14 @@ def output_matrix_kinematics(state, side, output_file=None):
             moments_stance['ankle_angle_' + side + '.moment_norm'].values)
 
 
-        output.iloc[i - 1]['ankle_moment_mean_swing_' + side] = np.mean(
-            moments_swing['ankle_angle_' + side + '.moment_norm'].values)
-        output.iloc[i - 1]['ankle_moment_std_swing_' + side] = np.std(
-            moments_swing['ankle_angle_' + side + '.moment_norm'].values)
-        output.iloc[i - 1]['ankle_moment_min_swing_' + side] = np.min(
-            moments_swing['ankle_angle_' + side + '.moment_norm'].values)
-        output.iloc[i - 1]['ankle_moment_max_swing_' + side] = np.max(
-            moments_swing['ankle_angle_' + side + '.moment_norm'].values)
+        #output.iloc[i - 1]['ankle_moment_mean_swing_' + side] = np.mean(
+         #   moments_swing['ankle_angle_' + side + '.moment_norm'].values)
+        #output.iloc[i - 1]['ankle_moment_std_swing_' + side] = np.std(
+        #    moments_swing['ankle_angle_' + side + '.moment_norm'].values)
+        #output.iloc[i - 1]['ankle_moment_min_swing_' + side] = np.min(
+         #   moments_swing['ankle_angle_' + side + '.moment_norm'].values)
+        #output.iloc[i - 1]['ankle_moment_max_swing_' + side] = np.max(
+         #   moments_swing['ankle_angle_' + side + '.moment_norm'].values)
 
 
         output.iloc[i - 1]['hip_moment_mean_stance_' + side] = np.mean(
@@ -1164,9 +1175,19 @@ def output_matrix_kinematics(state, side, output_file=None):
         output.iloc[i - 1]['grf_max_stance_' + side] = np.max(grf_stance[leg_name + '.grf_norm_y'].values)
 
 
-        output.iloc[i - 1]['grf_mean_swing_' + side] = np.mean(grf_swing[leg_name + '.grf_norm_y'].values)
-        output.iloc[i - 1]['grf_std_swing_' + side] = np.std(grf_swing[leg_name + '.grf_norm_y'].values)
-        output.iloc[i - 1]['grf_max_swing_' + side] = np.max(grf_swing[leg_name + '.grf_norm_y'].values)
+        #output.iloc[i - 1]['grf_mean_swing_' + side] = np.mean(grf_swing[leg_name + '.grf_norm_y'].values)
+        #output.iloc[i - 1]['grf_std_swing_' + side] = np.std(grf_swing[leg_name + '.grf_norm_y'].values)
+        #output.iloc[i - 1]['grf_max_swing_' + side] = np.max(grf_swing[leg_name + '.grf_norm_y'].values)
+
+        output.iloc[i - 1]['pelvis_tilt_mean_stance_' + side] = np.mean(kinematics_stance['pelvis_tilt'].values)
+        output.iloc[i - 1]['pelvis_tilt_std_stance_' + side] = np.std(kinematics_stance['pelvis_tilt'].values)
+        output.iloc[i - 1]['pelvis_tilt_min_stance_' + side] = np.min(kinematics_stance['pelvis_tilt'].values)
+        output.iloc[i - 1]['pelvis_tilt_max_stance_' + side] = np.max(kinematics_stance['pelvis_tilt'].values)
+
+        output.iloc[i - 1]['pelvis_tilt_mean_swing_' + side] = np.mean(kinematics_swing['pelvis_tilt'].values)
+        output.iloc[i - 1]['pelvis_tilt_std_swing_' + side] = np.std(kinematics_swing['pelvis_tilt'].values)
+        output.iloc[i - 1]['pelvis_tilt_min_swing_' + side] = np.min(kinematics_swing['pelvis_tilt'].values)
+        output.iloc[i - 1]['pelvis_tilt_max_swing_' + side] = np.max(kinematics_swing['pelvis_tilt'].values)
     return output
 
 

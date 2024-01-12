@@ -1,17 +1,21 @@
 #This script generates:
+# - a plot depicting all the gait cycles for the impaired gait
+# - a plot depicting all the gait cycles for the healthy slow gait scenario
 # - a plot depicting the average signal for the impaired gait
 # - a plot depicting the average signal for the healthy slow gait
 # - a plot in which both the average signal for the impaired gait and
 # the average signal for the healthy slow gait are depicted
-# - calculate and export the relative difference mean_impaired - mean_healthy
-# for further analysis with the keppler mapper
+# - Calculate and export the relative difference mean_impaired - mean_healthy
+# for further analysis with the keppler mapper in "KM_high_dim_new_standardizaion_without_grf_swing.py"
 
 
 from utils import *
 
+state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/Right_knee_red_max_65_deg_4th_attempt_6.f0914m.GH2010v8.S05W.D15.I/0242_23.603_0.765.par.sto")
+
 #state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/Right_hip_red_max_minus_0_deg_6_corrected_measure.f0914m.GH2010v8.S05W.D15.I/0425_8.362_0.779.par.sto")
 
-state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/Right_hip_red_max_minus_3_deg_9.f0914m.GH2010v8.S05W.D15.I/0347_0.702_0.697.par.sto")
+#state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/Right_hip_red_max_minus_3_deg_9.f0914m.GH2010v8.S05W.D15.I/0347_0.702_0.697.par.sto")
 
 #state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/Right_hip_red_max_minus_5_deg_4.f0914m.GH2010v8.S05W.D15.I (1)/0443_0.671_0.669.par.sto")
 
@@ -29,7 +33,8 @@ state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/R
 #state_file = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/Right_knee_red_max_50_deg_min_BothKnee_0_deg_18.f0914m.GH2010v8.S05W.D15.I/0212_42.115_2.749.par.sto")
 
 #healthy slow gait (run with optimized initial guess ALice's code)
-state_file_healthy = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/max_isometric_force_90.f0914m.GH2010v8.S05W.D15.I/0143_0.595_0.589.par.sto")
+#state_file_healthy = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/max_isometric_force_90.f0914m.GH2010v8.S05W.D15.I/0143_0.595_0.589.par.sto")
+state_file_healthy = os.path.abspath( "C:/Users/lea.chabrowski/Documents/SCONE/results/healthy_slow_gait.f0914m.GH2010v8.S05W.D15.I/0226_44.549_0.601.par.sto")
 
 
 
@@ -38,6 +43,14 @@ state_healthy = read_from_storage(state_file_healthy)
 side = 'l'
 
 state = read_from_storage(state_file)
+
+#Plot all the gait cycles generated for the impaired case
+plot_scone_joint_kinematics(state, side, output_file=output_file)
+plt.show()
+
+#Plot all the gait cycles generated for the healthy slow gait scenario
+plot_scone_joint_kinematics(state_healthy, side, output_file=output_file)
+plt.show()
 
 #Generate a plot depicting the average signal for the
 # healthy slow gait scenario.
@@ -66,4 +79,5 @@ output_impaired_mean = output_impaired.mean(axis = 0)
 
 # Calculate the relative difference (impaired - healthy)
 relative_difference_mean = output_healthy_mean - output_impaired_mean
-relative_difference_mean.to_csv("C:\\Users\\lea.chabrowski\\Desktop\\new_standardization\\relative_difference_Right_hip_red_max_minus_13_deg_4_corrected_measure_r.csv")
+#Export the file to be further analysed in "KM_high_dim_new_standardizaion_without_grf_swing.py"
+#relative_difference_mean.to_csv("C:\\Users\\lea.chabrowski\\Desktop\\new_standardization3\\relative_difference_Right_hip_red_max_minus_13_deg_4_corrected_measure_l.csv")
